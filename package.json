@@ -4,7 +4,10 @@
   "description": "A classis game written in JS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "repository": {
     "type": "git",
@@ -15,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/romankp/sweeper/issues"
   },
-  "homepage": "https://github.com/romankp/sweeper#readme"
+  "homepage": "https://github.com/romankp/sweeper#readme",
+  "dependencies": {
+    "eslint-config-next": "13.1",
+    "next": "13.1",
+    "react": "18.2",
+    "react-dom": "18.2"
+  }
 }
