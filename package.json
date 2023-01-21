@@ -1,0 +1,19 @@
+{
+  "name": "sweeper",
+  "version": "1.0.0",
+  "description": "A classis game written in JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romankp/sweeper.git"
+  },
+  "author": "romankp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/romankp/sweeper/issues"
+  },
+  "homepage": "https://github.com/romankp/sweeper#readme"
+}
