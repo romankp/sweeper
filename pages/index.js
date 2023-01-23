@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 
+let LAT = 4;
+
 const populateField = size => {
   let cells = [];
   for (let i = 0; i < size; i++) {
-    cells.push(<li></li>);
+    cells.push(<li key={i}></li>);
   }
   return cells;
 };
 
 function Root() {
-  const [fieldSize] = useState(4 * 4);
+  const [fieldSize] = useState(LAT ** 2);
 
   return (
     <>
