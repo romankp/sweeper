@@ -24,5 +24,8 @@
     "next": "13.1",
     "react": "18.2",
     "react-dom": "18.2"
+  },
+  "devDependencies": {
+    "sass": "1.57"
   }
 }
