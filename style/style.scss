@@ -11,13 +11,32 @@ ul {
 }
 
 // Content
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
 ul {
   display: grid;
-  grid-template-columns: repeat(var(--dim-val, 10), auto);
-  grid-template-rows: repeat(var(--dim-val, 10), auto);
+  grid-template-columns: repeat(var(--dim-val, 4), auto);
+  grid-template-rows: repeat(var(--dim-val, 4), auto);
   width: 400px;
   height: 400px;
   list-style: none;
   column-gap: 2px;
   row-gap: 2px;
+  border: 2px solid gray;
+  background-color: gray;
+}
+
+li {
+  background-color: white;
 }
