@@ -1,0 +1,23 @@
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+// Content
+ul {
+  display: grid;
+  grid-template-columns: repeat(var(--dim-val, 10), auto);
+  grid-template-rows: repeat(var(--dim-val, 10), auto);
+  width: 400px;
+  height: 400px;
+  list-style: none;
+  column-gap: 2px;
+  row-gap: 2px;
+}
