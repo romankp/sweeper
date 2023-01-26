@@ -1,28 +1,24 @@
 const LAT_DIM = 4;
 const MINE_CHANCE = 20 / 100;
 
-// const buildFieldData = size => {
-//   let cellData = [];
-//   for (let i = 0; i < size; i++) {
-//     cellData.push({
-//       hidden: true,
-//       mine: randomizeBool(MINE_CHANCE),
-//     });
-//   }
-//   console.log(cellData);
-//   return cellData;
-// };
+let fieldSize = LAT_DIM ** 2;
+let fieldData = [];
 
-// const randomizeBool = chanceRatio => {
-//   return Math.random() > chanceRatio ? false : true;
-// };
+const initFieldData = size => {
+  let cellData = [];
+  for (let i = 0; i < size; i++) {
+    cellData.push({
+      hidden: true,
+      mine: randomizeBool(MINE_CHANCE),
+    });
+  }
+  return cellData;
+};
 
-// function Root() {
-//   const [fieldSize] = useState(LAT_DIM ** 2);
-//   const [fieldData, updateField] = useState(buildFieldData(fieldSize));
+const randomizeBool = chanceRatio => {
+  return Math.random() > chanceRatio ? false : true;
+};
 
-//   const handleClick = ({ target }) => {
-//     console.log(target.getAttribute('data-index'));
-//     console.log(fieldData[target.getAttribute('data-index')]);
-//   };
-// }
+fieldData = initFieldData(fieldSize);
+
+console.log(fieldData);
