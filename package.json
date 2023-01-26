@@ -2,12 +2,10 @@
   "name": "sweeper",
   "version": "1.0.0",
   "description": "A classis game written in JS",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "parcel",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
@@ -19,13 +17,9 @@
     "url": "https://github.com/romankp/sweeper/issues"
   },
   "homepage": "https://github.com/romankp/sweeper#readme",
-  "dependencies": {
-    "eslint-config-next": "13.1",
-    "next": "13.1",
-    "react": "18.2",
-    "react-dom": "18.2"
-  },
+  "source": "src/index.html",
+  "dependencies": {},
   "devDependencies": {
-    "sass": "1.57"
+    "parcel": "2.8"
   }
 }
