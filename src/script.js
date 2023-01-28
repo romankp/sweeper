@@ -20,6 +20,18 @@ const randomizeBool = chanceRatio => {
   return Math.random() > chanceRatio ? false : true;
 };
 
+const handleClick = ({ target }) => {
+  const { index } = target.dataset;
+  const cellData = fieldData[index];
+  console.log(target);
+  console.log(target.dataset);
+  console.log(cellData);
+};
+
+// const handlekMine = () => {};
+// const handleProx = () => {};
+// const handleEmpty = () => {};
+
 // Initialize field data
 fieldData = initFieldData(fieldSize);
 
@@ -28,6 +40,7 @@ fieldData.map(({ hidden }, i) => {
   const cell = document.createElement('li');
 
   cell.setAttribute('data-index', i);
+  cell.onclick = handleClick;
   if (hidden) {
     cell.classList.add('hidden');
   }
