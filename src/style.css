@@ -17,11 +17,13 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: black;
 }
 
 h1 {
   text-align: center;
   margin-bottom: 12px;
+  color: azure;
 }
 
 ul {
@@ -31,12 +33,17 @@ ul {
   width: 400px;
   height: 400px;
   list-style: none;
-  column-gap: 2px;
-  row-gap: 2px;
-  border: 2px solid gray;
-  background-color: gray;
+  column-gap: 4px;
+  row-gap: 4px;
+  border: 4px solid beige;
+  background-color: beige;
 }
 
 li {
-  background-color: white;
+  background-color: black;
+}
+
+li:hover {
+  background-color: gray;
+  cursor: pointer;
 }
