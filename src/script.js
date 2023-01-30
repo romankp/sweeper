@@ -22,10 +22,14 @@ const randomizeBool = chanceRatio => {
 
 const handleClick = ({ target }) => {
   const { index } = target.dataset;
-  const cellData = fieldData[index];
+  const { mine } = fieldData[index];
+
+  if (mine) {
+    console.log('MINE');
+  }
   console.log(target);
   console.log(target.dataset);
-  console.log(cellData);
+  console.log(mine);
 };
 
 // const handlekMine = () => {};
