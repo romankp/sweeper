@@ -10,7 +10,7 @@ const initFieldData = size => {
   for (let i = 0; i < size; i++) {
     cellData.push({
       hidden: true,
-      mine: randomizeBool(MINE_CHANCE),
+      content: randomizeBool(MINE_CHANCE) && 'mine',
     });
   }
   return cellData;
@@ -21,18 +21,22 @@ const randomizeBool = chanceRatio => {
 };
 
 const handleClick = ({ target }) => {
+  const handleList = {
+    mine: handleMine(),
+  };
   const { index } = target.dataset;
-  const { mine } = fieldData[index];
+  const { content } = fieldData[index];
 
-  if (mine) {
-    console.log('MINE');
-  }
+  handleList[content];
+
   console.log(target);
   console.log(target.dataset);
-  console.log(mine);
+  console.log(content);
 };
 
-// const handlekMine = () => {};
+const handleMine = () => {
+  console.log('MINE -> mine handled');
+};
 // const handleProx = () => {};
 // const handleEmpty = () => {};
 
