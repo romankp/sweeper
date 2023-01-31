@@ -4,6 +4,7 @@ const MINE_CHANCE = 20 / 100;
 const field = document.getElementsByTagName('ul')[0];
 let fieldSize = LAT_DIM ** 2;
 let fieldData = [];
+// let debug = true;
 
 const initFieldData = size => {
   let cellData = [];
@@ -25,22 +26,29 @@ const randomizeBool = chanceRatio => {
 
 const handleClick = ({ target }) => {
   const { index } = target.dataset;
-  const { mine } = fieldData[index];
+  const { mine, count } = fieldData[index];
 
   if (mine) {
-    handleMine();
+    handleMine(target);
+  } else {
+    if (count) {
+      handleCount();
+    } else {
+      handleEmpty();
+    }
   }
 
   console.log(target);
   console.log(target.dataset);
 };
 
-const handleMine = () => {
+const handleMine = target => {
+  target.classList.remove('hidden');
   console.log('MINE -> mine handled');
 };
 
-// const handleProx = () => {};
-// const handleEmpty = () => {};
+const handleCount = () => {};
+const handleEmpty = () => {};
 
 // Initialize field data
 fieldData = initFieldData(fieldSize);
