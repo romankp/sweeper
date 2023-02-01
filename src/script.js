@@ -11,11 +11,14 @@ const initFieldData = size => {
 
   for (let i = 0; i < size; i++) {
     cellData.push({
-      hidden: true,
       mine: randomizeBool(MINE_CHANCE),
-      count: 0,
     });
   }
+
+  cellData.forEach(({ mine }, i) => {
+    cellData[i].hidden = true;
+    cellData[i].count = 0;
+  });
 
   return cellData;
 };
