@@ -35,15 +35,19 @@ ul {
   list-style: none;
   column-gap: 4px;
   row-gap: 4px;
-  border: 4px solid beige;
+  border: 16px solid beige;
   background-color: beige;
 }
 
 li {
-  background-color: black;
+  background-color: beige;
 }
 
 li:hover {
   background-color: gray;
   cursor: pointer;
+}
+
+.hidden {
+  background-color: black;
 }

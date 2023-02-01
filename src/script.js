@@ -47,8 +47,12 @@ const handleMine = target => {
   console.log('MINE -> mine handled');
 };
 
-const handleCount = () => {};
-const handleEmpty = () => {};
+const handleCount = () => {
+  target.classList.remove('hidden');
+};
+const handleEmpty = () => {
+  target.classList.remove('hidden');
+};
 
 // Initialize field data
 fieldData = initFieldData(fieldSize);
