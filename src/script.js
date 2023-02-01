@@ -32,9 +32,9 @@ const handleClick = ({ target }) => {
     handleMine(target);
   } else {
     if (count) {
-      handleCount();
+      handleCount(target);
     } else {
-      handleEmpty();
+      handleEmpty(target);
     }
   }
 
@@ -44,13 +44,14 @@ const handleClick = ({ target }) => {
 
 const handleMine = target => {
   target.classList.remove('hidden');
+  target.classList.add('mine');
   console.log('MINE -> mine handled');
 };
 
-const handleCount = () => {
+const handleCount = target => {
   target.classList.remove('hidden');
 };
-const handleEmpty = () => {
+const handleEmpty = target => {
   target.classList.remove('hidden');
 };
 

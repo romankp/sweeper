@@ -18,6 +18,7 @@ body {
   align-items: center;
   flex-direction: column;
   background-color: black;
+  font-family: monospace;
 }
 
 h1 {
@@ -50,4 +51,21 @@ li:hover {
 
 .hidden {
   background-color: black;
+}
+
+.mine {
+  background-color: red;
+  position: relative;
+}
+
+.mine::before {
+  content: 'X';
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-size: 62px;
 }
