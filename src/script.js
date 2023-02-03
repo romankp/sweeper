@@ -28,6 +28,23 @@ const initFieldData = size => {
 
   console.log(mineCells);
 
+  mineCells.forEach(id => {
+    const prox = {
+      nw: id - LAT_DIM - 1,
+      n: id - LAT_DIM,
+      ne: id - LAT_DIM + 1,
+      e: id + 1,
+      se: id + LAT_DIM + 1,
+      s: id + LAT_DIM,
+      sw: id + LAT_DIM - 1,
+      w: id - 1,
+    };
+
+    if (prox.nw >= 0 && !cellData[prox.nw].mine) {
+      cellData[prox.nw].count++;
+    }
+  });
+
   return cellData;
 };
 
