@@ -8,20 +8,30 @@ let fieldData = [];
 
 const initFieldData = size => {
   let cellData = [];
+  let mineCells = [];
 
   for (let i = 0; i < size; i++) {
+    const hasMine = randomizeBool(MINE_CHANCE);
+
     cellData.push({
-      mine: randomizeBool(MINE_CHANCE),
+      id: i,
+      hidden: true,
+      count: 0,
+      mine: hasMine,
     });
+
+    // Keep track of each cell with a mine
+    if (hasMine) {
+      mineCells.push(i);
+    }
   }
 
-  cellData.forEach(({ mine }, i) => {
-    cellData[i].hidden = true;
-    cellData[i].count = 0;
-  });
+  console.log(mineCells);
 
   return cellData;
 };
+
+const setCount = array => {};
 
 const randomizeBool = chanceRatio => {
   return Math.random() > chanceRatio ? false : true;
@@ -64,6 +74,7 @@ fieldData = initFieldData(fieldSize);
 // Render field
 fieldData.map(({ hidden }, i) => {
   const cell = document.createElement('li');
+  const content = document.createElement('span');
 
   cell.setAttribute('data-index', i);
   cell.onclick = handleClick;
