@@ -29,23 +29,22 @@ const initFieldData = size => {
   console.log(mineCells);
 
   mineCells.forEach(id => {
-    // Surrounding cells, from NW, clockwise
-    const proxCells = [
-      id - LAT_DIM - 1,
-      id - LAT_DIM,
-      id - LAT_DIM + 1,
-      id + 1,
-      id + LAT_DIM + 1,
-      id + LAT_DIM,
-      id + LAT_DIM - 1,
-      id - 1,
-    ];
+    // Cells above & below mine
+    const proxCells = [id - LAT_DIM, id + LAT_DIM];
 
+    // The mine isn't against the left edge of the field
+    if (id !== 0 && id % LAT_DIM !== 0) {
+      proxCells.push(id - LAT_DIM - 1, id - 1, id + LAT_DIM - 1);
+    }
+
+    // The mine isn't against the right edge of the field
+    if ((id + 1) % LAT_DIM !== 0) {
+      proxCells.push(id - LAT_DIM + 1, id + 1, id + LAT_DIM + 1);
+    }
+
+    // Process surrounding count
     proxCells.forEach(prox => {
-      // console.log(prox);
-      // console.log(prox >= 0);
       if (prox >= 0 && prox < fieldSize && !cellData[prox].mine) {
-        // console.log(cellData[prox]);
         cellData[prox].count++;
       }
     });
