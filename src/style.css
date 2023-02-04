@@ -42,6 +42,7 @@ ul {
 
 li {
   background-color: beige;
+  position: relative;
 }
 
 li:hover {
@@ -55,7 +56,6 @@ li:hover {
 
 .mine {
   background-color: red;
-  position: relative;
 }
 
 span {

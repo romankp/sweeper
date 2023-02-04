@@ -63,7 +63,7 @@ const handleClick = ({ target }) => {
     handleMine(target);
   } else {
     if (count) {
-      handleCount(target);
+      handleCount(target, count);
     } else {
       handleEmpty(target);
     }
@@ -76,9 +76,12 @@ const handleMine = target => {
   target.children[0].innerText = 'X';
 };
 
-const handleCount = target => {
+const handleCount = (target, count) => {
   target.classList.remove('hidden');
+  target.classList.add('count');
+  target.children[0].innerText = `${count}`;
 };
+
 const handleEmpty = target => {
   target.classList.remove('hidden');
 };
