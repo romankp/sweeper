@@ -26,8 +26,6 @@ const initFieldData = size => {
     }
   }
 
-  console.log(mineCells);
-
   mineCells.forEach(id => {
     // Cells above & below mine
     const proxCells = [id - LAT_DIM, id + LAT_DIM];
@@ -53,8 +51,6 @@ const initFieldData = size => {
   return cellData;
 };
 
-const setCount = array => {};
-
 const randomizeBool = chanceRatio => {
   return Math.random() > chanceRatio ? false : true;
 };
@@ -72,15 +68,11 @@ const handleClick = ({ target }) => {
       handleEmpty(target);
     }
   }
-
-  console.log(target);
-  console.log(target.dataset);
 };
 
 const handleMine = target => {
   target.classList.remove('hidden');
   target.classList.add('mine');
-  console.log('MINE -> mine handled');
 };
 
 const handleCount = target => {
