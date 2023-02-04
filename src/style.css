@@ -58,8 +58,8 @@ li:hover {
   position: relative;
 }
 
-.mine::before {
-  content: 'X';
+span {
+  pointer-events: none;
   position: absolute;
   display: flex;
   justify-content: center;

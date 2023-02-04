@@ -73,6 +73,7 @@ const handleClick = ({ target }) => {
 const handleMine = target => {
   target.classList.remove('hidden');
   target.classList.add('mine');
+  target.children[0].innerText = 'X';
 };
 
 const handleCount = target => {
@@ -96,6 +97,7 @@ fieldData.map(({ hidden }, i) => {
     cell.classList.add('hidden');
   }
 
+  cell.appendChild(content);
   field.appendChild(cell);
 });
 
