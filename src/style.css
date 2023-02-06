@@ -29,8 +29,8 @@ h1 {
 
 ul {
   display: grid;
-  grid-template-columns: repeat(var(--dim-val, 4), auto);
-  grid-template-rows: repeat(var(--dim-val, 4), auto);
+  grid-template-columns: repeat(var(--dim-val, 5), auto);
+  grid-template-rows: repeat(var(--dim-val, 5), auto);
   width: 400px;
   height: 400px;
   list-style: none;
@@ -56,6 +56,10 @@ li:hover {
 
 .mine {
   background-color: red;
+}
+
+.marked {
+  background-color: orange;
 }
 
 span {

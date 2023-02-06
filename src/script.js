@@ -1,4 +1,4 @@
-const LAT_DIM = 4;
+const LAT_DIM = 5;
 const MINE_CHANCE = 20 / 100;
 
 const field = document.getElementsByTagName('ul')[0];
@@ -17,6 +17,7 @@ const initFieldData = size => {
       hidden: true,
       count: 0,
       mine: hasMine,
+      marked: false,
     });
 
     // Keep track of each cell with a mine
@@ -68,6 +69,19 @@ const handleClick = ({ target }) => {
       handleEmpty(target, indexInt);
     }
   }
+};
+
+const handleRightClick = e => {
+  // Prevent context menu
+  e.preventDefault();
+
+  const { target } = e;
+  const { index } = target.dataset;
+  const indexInt = Number(index);
+
+  fieldData[indexInt].marked = true;
+  target.classList.add('marked');
+  target.children[0].innerText = '!';
 };
 
 const handleMine = (target, i) => {
@@ -133,6 +147,7 @@ fieldData.map(({ hidden }, i) => {
 
   cell.setAttribute('data-index', i);
   cell.onclick = handleClick;
+  cell.oncontextmenu = handleRightClick;
   if (hidden) {
     cell.classList.add('hidden');
   }
