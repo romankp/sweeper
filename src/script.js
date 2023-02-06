@@ -4,7 +4,6 @@ const MINE_CHANCE = 20 / 100;
 const field = document.getElementsByTagName('ul')[0];
 let fieldSize = LAT_DIM ** 2;
 let fieldData = [];
-// let debug = true;
 
 const initFieldData = size => {
   let cellData = [];
@@ -58,32 +57,70 @@ const randomizeBool = chanceRatio => {
 const handleClick = ({ target }) => {
   const { index } = target.dataset;
   const { mine, count } = fieldData[index];
+  const indexInt = Number(index);
 
   if (mine) {
-    handleMine(target);
+    handleMine(target, indexInt);
   } else {
     if (count) {
-      handleCount(target, count);
+      handleCount(target, count, indexInt);
     } else {
-      handleEmpty(target);
+      handleEmpty(target, indexInt);
     }
   }
 };
 
-const handleMine = target => {
+const handleMine = (target, i) => {
+  fieldData[i].hidden = false;
   target.classList.remove('hidden');
   target.classList.add('mine');
   target.children[0].innerText = 'X';
 };
 
-const handleCount = (target, count) => {
+const handleCount = (target, count, i) => {
+  fieldData[i].hidden = false;
   target.classList.remove('hidden');
   target.classList.add('count');
   target.children[0].innerText = `${count}`;
 };
 
-const handleEmpty = target => {
+const handleEmpty = (target, i) => {
+  fieldData[i].hidden = false;
   target.classList.remove('hidden');
+  target.classList.add('empty');
+
+  // Cells above & below mine
+  const proxCells = [i - LAT_DIM, i + LAT_DIM];
+
+  // The mine isn't against the left edge of the field
+  if (i !== 0 && i % LAT_DIM !== 0) {
+    proxCells.push(i - LAT_DIM - 1, i - 1, i + LAT_DIM - 1);
+  }
+
+  // The mine isn't against the right edge of the field
+  if ((i + 1) % LAT_DIM !== 0) {
+    proxCells.push(i - LAT_DIM + 1, i + 1, i + LAT_DIM + 1);
+  }
+
+  // Process surrounding count
+  proxCells.forEach(prox => {
+    if (
+      prox >= 0 &&
+      prox < fieldSize &&
+      !fieldData[prox].mine &&
+      fieldData[prox].hidden
+    ) {
+      const cellEl = document.getElementsByTagName('li')[prox];
+
+      if (fieldData[prox].count) {
+        handleCount(cellEl, fieldData[prox].count, prox);
+      } else {
+        fieldData[prox].hidden = false;
+        cellEl.classList.remove('hidden');
+        cellEl.classList.add('empty');
+      }
+    }
+  });
 };
 
 // Initialize field data
