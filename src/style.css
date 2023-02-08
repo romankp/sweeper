@@ -29,8 +29,8 @@ h1 {
 
 ul {
   display: grid;
-  grid-template-columns: repeat(var(--dim-val, 5), auto);
-  grid-template-rows: repeat(var(--dim-val, 5), auto);
+  grid-template-columns: repeat(var(--dim-val, 8), auto);
+  grid-template-rows: repeat(var(--dim-val, 8), auto);
   width: 400px;
   height: 400px;
   list-style: none;
@@ -71,5 +71,5 @@ span {
   height: 100%;
   width: 100%;
   text-align: center;
-  font-size: 62px;
+  font-size: 36px;
 }

@@ -1,5 +1,5 @@
-const LAT_DIM = 5;
-const MINE_CHANCE = 20 / 100;
+const LAT_DIM = 8;
+const MINE_CHANCE = 5 / 100;
 
 const field = document.getElementsByTagName('ul')[0];
 let fieldSize = LAT_DIM ** 2;
