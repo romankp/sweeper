@@ -93,7 +93,7 @@ const handleEmpty = (target, i) => {
   let proxCells = getProxCells(i, LAT_DIM);
   let emptyCells = [];
 
-  // Process surrounding count
+  // Process surrounding count and empty cells of click target
   proxCells.forEach(prox => {
     if (
       prox >= 0 &&
@@ -114,8 +114,32 @@ const handleEmpty = (target, i) => {
     }
   });
 
-  console.log(proxCells);
-  console.log(emptyCells);
+  // Radiate out to reveal adjacent empty and count cells
+  while (emptyCells.length > 0) {
+    proxCells = getProxCells(emptyCells.shift(), LAT_DIM).filter(
+      cell => fieldData[cell] && fieldData[cell].hidden && !fieldData[cell].mine
+    );
+
+    proxCells.forEach(prox => {
+      if (
+        prox >= 0 &&
+        prox < fieldSize &&
+        !fieldData[prox].mine &&
+        fieldData[prox].hidden
+      ) {
+        const cellEl = document.getElementsByTagName('li')[prox];
+
+        if (fieldData[prox].count) {
+          handleCount(cellEl, fieldData[prox].count, prox);
+        } else {
+          emptyCells.push(prox);
+          fieldData[prox].hidden = false;
+          cellEl.classList.remove('hidden');
+          cellEl.classList.add('empty');
+        }
+      }
+    });
+  }
 };
 
 // Initialize field data
