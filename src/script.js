@@ -29,18 +29,7 @@ const initFieldData = size => {
   }
 
   mineCells.forEach(id => {
-    // Cells above & below mine
-    const proxCells = [id - LAT_DIM, id + LAT_DIM];
-
-    // The mine isn't against the left edge of the field
-    if (id !== 0 && id % LAT_DIM !== 0) {
-      proxCells.push(id - LAT_DIM - 1, id - 1, id + LAT_DIM - 1);
-    }
-
-    // The mine isn't against the right edge of the field
-    if ((id + 1) % LAT_DIM !== 0) {
-      proxCells.push(id - LAT_DIM + 1, id + 1, id + LAT_DIM + 1);
-    }
+    const proxCells = getProxCells(id);
 
     // Process surrounding count
     proxCells.forEach(prox => {
@@ -101,18 +90,7 @@ const handleEmpty = (target, i) => {
   target.classList.remove('hidden');
   target.classList.add('empty');
 
-  // Cells above & below mine
-  const proxCells = [i - LAT_DIM, i + LAT_DIM];
-
-  // The mine isn't against the left edge of the field
-  if (i !== 0 && i % LAT_DIM !== 0) {
-    proxCells.push(i - LAT_DIM - 1, i - 1, i + LAT_DIM - 1);
-  }
-
-  // The mine isn't against the right edge of the field
-  if ((i + 1) % LAT_DIM !== 0) {
-    proxCells.push(i - LAT_DIM + 1, i + 1, i + LAT_DIM + 1);
-  }
+  const proxCells = getProxCells(i);
 
   // Process surrounding count
   proxCells.forEach(prox => {
@@ -133,6 +111,25 @@ const handleEmpty = (target, i) => {
       }
     }
   });
+
+  console.log(proxCells);
+};
+
+const getProxCells = i => {
+  // Cells above & below mine
+  const cells = [i - LAT_DIM, i + LAT_DIM];
+
+  // The mine isn't against the left edge of the field
+  if (i !== 0 && i % LAT_DIM !== 0) {
+    cells.push(i - LAT_DIM - 1, i - 1, i + LAT_DIM - 1);
+  }
+
+  // The mine isn't against the right edge of the field
+  if ((i + 1) % LAT_DIM !== 0) {
+    cells.push(i - LAT_DIM + 1, i + 1, i + LAT_DIM + 1);
+  }
+
+  return cells;
 };
 
 // Initialize field data
