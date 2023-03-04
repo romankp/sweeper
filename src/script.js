@@ -1,4 +1,4 @@
-import { randomizeBool } from './util';
+import { randomizeBool } from './util.js';
 
 const LAT_DIM = 8;
 const MINE_CHANCE = 7 / 100;
