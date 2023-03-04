@@ -90,7 +90,8 @@ const handleEmpty = (target, i) => {
   target.classList.remove('hidden');
   target.classList.add('empty');
 
-  const proxCells = getProxCells(i, LAT_DIM);
+  let proxCells = getProxCells(i, LAT_DIM);
+  let emptyCells = [];
 
   // Process surrounding count
   proxCells.forEach(prox => {
@@ -105,6 +106,7 @@ const handleEmpty = (target, i) => {
       if (fieldData[prox].count) {
         handleCount(cellEl, fieldData[prox].count, prox);
       } else {
+        emptyCells.push(prox);
         fieldData[prox].hidden = false;
         cellEl.classList.remove('hidden');
         cellEl.classList.add('empty');
@@ -113,6 +115,7 @@ const handleEmpty = (target, i) => {
   });
 
   console.log(proxCells);
+  console.log(emptyCells);
 };
 
 // Initialize field data
