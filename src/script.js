@@ -1,3 +1,5 @@
+import { randomizeBool } from './util';
+
 const LAT_DIM = 8;
 const MINE_CHANCE = 7 / 100;
 
@@ -49,10 +51,6 @@ const initFieldData = size => {
   });
 
   return cellData;
-};
-
-const randomizeBool = chanceRatio => {
-  return Math.random() > chanceRatio ? false : true;
 };
 
 const handleClick = ({ target }) => {
