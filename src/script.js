@@ -1,4 +1,4 @@
-import { randomizeBool } from './util.js';
+import { randomizeBool, getProxCells } from './util.js';
 
 const LAT_DIM = 8;
 const MINE_CHANCE = 7 / 100;
@@ -29,7 +29,7 @@ const initFieldData = size => {
   }
 
   mineCells.forEach(id => {
-    const proxCells = getProxCells(id);
+    const proxCells = getProxCells(id, LAT_DIM);
 
     // Process surrounding count
     proxCells.forEach(prox => {
@@ -90,7 +90,7 @@ const handleEmpty = (target, i) => {
   target.classList.remove('hidden');
   target.classList.add('empty');
 
-  const proxCells = getProxCells(i);
+  const proxCells = getProxCells(i, LAT_DIM);
 
   // Process surrounding count
   proxCells.forEach(prox => {
@@ -113,23 +113,6 @@ const handleEmpty = (target, i) => {
   });
 
   console.log(proxCells);
-};
-
-const getProxCells = i => {
-  // Cells above & below mine
-  const cells = [i - LAT_DIM, i + LAT_DIM];
-
-  // The mine isn't against the left edge of the field
-  if (i !== 0 && i % LAT_DIM !== 0) {
-    cells.push(i - LAT_DIM - 1, i - 1, i + LAT_DIM - 1);
-  }
-
-  // The mine isn't against the right edge of the field
-  if ((i + 1) % LAT_DIM !== 0) {
-    cells.push(i - LAT_DIM + 1, i + 1, i + LAT_DIM + 1);
-  }
-
-  return cells;
 };
 
 // Initialize field data
