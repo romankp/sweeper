@@ -78,7 +78,13 @@ const handleDoubleClick = e => {
   const cell = fieldData[indexInt];
 
   if (cell.count && !cell.hidden) {
-    console.log('double click!');
+    const proxCells = getProxCells(indexInt, LAT_DIM);
+    const markedCells = proxCells.filter(
+      cell => fieldData[cell] && fieldData[cell].marked
+    );
+
+    console.log(proxCells);
+    console.log(markedCells);
   }
 };
 
