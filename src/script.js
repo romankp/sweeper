@@ -71,6 +71,8 @@ const handleRightClick = e => {
   target.children[0].innerText = '!';
 };
 
+const handleDoubleClick = e => {};
+
 const handleMine = (target, i) => {
   fieldData[i].hidden = false;
   target.classList.remove('hidden');
@@ -152,7 +154,9 @@ fieldData.map(({ hidden }, i) => {
 
   cell.setAttribute('data-index', i);
   cell.onclick = handleClick;
+  cell.ondblclick = handleDoubleClick;
   cell.oncontextmenu = handleRightClick;
+
   if (hidden) {
     cell.classList.add('hidden');
   }
