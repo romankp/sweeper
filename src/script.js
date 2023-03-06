@@ -71,7 +71,16 @@ const handleRightClick = e => {
   target.children[0].innerText = '!';
 };
 
-const handleDoubleClick = e => {};
+const handleDoubleClick = e => {
+  const { target } = e;
+  const { index } = target.dataset;
+  const indexInt = Number(index);
+  const cell = fieldData[indexInt];
+
+  if (cell.count && !cell.hidden) {
+    console.log('double click!');
+  }
+};
 
 const handleMine = (target, i) => {
   fieldData[i].hidden = false;
