@@ -83,12 +83,28 @@ const handleDoubleClick = e => {
       cell => fieldData[cell] && fieldData[cell].marked
     );
 
+    // If the number of marked cells in the proximity of the clicked cell
+    // is the same as its count value, reveal any obscured cells in that proximity.
+    // This is meant to mimic the actual game's handy doubleclick feature
     if (markedCells.length === cell.count) {
-      console.log('number of marked cells is the same as the cell count');
-    }
+      proxCells.forEach(cell => {
+        const { id, mine, count, hidden, marked } = fieldData[cell];
 
-    console.log(proxCells);
-    console.log(markedCells);
+        if (hidden && !marked) {
+          const cellEl = document.getElementsByTagName('li')[id];
+
+          if (mine) {
+            handleMine(cellEl, id);
+          } else {
+            if (count) {
+              handleCount(cellEl, count, id);
+            } else {
+              handleEmpty(cellEl, id);
+            }
+          }
+        }
+      });
+    }
   }
 };
 
