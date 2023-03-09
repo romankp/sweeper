@@ -83,6 +83,10 @@ const handleDoubleClick = e => {
       cell => fieldData[cell] && fieldData[cell].marked
     );
 
+    if (markedCells.length === cell.count) {
+      console.log('number of marked cells is the same as the cell count');
+    }
+
     console.log(proxCells);
     console.log(markedCells);
   }
