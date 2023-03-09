@@ -79,9 +79,7 @@ const handleDoubleClick = e => {
 
   if (cell.count && !cell.hidden) {
     const proxCells = getProxCells(indexInt, LAT_DIM);
-    const markedCells = proxCells.filter(
-      cell => fieldData[cell] && fieldData[cell].marked
-    );
+    const markedCells = proxCells.filter(cell => fieldData[cell].marked);
 
     // If the number of marked cells in the proximity of the clicked cell
     // is the same as its count value, reveal any obscured cells in that proximity.
@@ -154,7 +152,7 @@ const handleEmpty = (target, i) => {
   // Radiate out to reveal adjacent empty and count cells
   while (emptyCells.length > 0) {
     proxCells = getProxCells(emptyCells.shift(), LAT_DIM).filter(
-      cell => fieldData[cell] && fieldData[cell].hidden && !fieldData[cell].mine
+      cell => fieldData[cell].hidden && !fieldData[cell].mine
     );
 
     proxCells.forEach(prox => {
