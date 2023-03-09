@@ -17,7 +17,7 @@ const getProxCells = (i, dim) => {
   }
 
   // Filter out prox cells that would be beyond the top and bottom edges of the field
-  return cells.filter(cell => cell > 0 && cell < dim ** 2);
+  return cells.filter(cell => cell >= 0 && cell < dim ** 2);
 };
 
 export { randomizeBool, getProxCells };
