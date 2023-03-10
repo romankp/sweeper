@@ -1,7 +1,7 @@
 import { randomizeBool, getProxCells } from './util.js';
 
 const LAT_DIM = 8;
-const MINE_CHANCE = 7 / 100;
+const MINE_CHANCE = 10 / 100;
 
 const field = document.getElementsByTagName('ul')[0];
 let fieldSize = LAT_DIM ** 2;
