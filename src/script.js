@@ -107,23 +107,17 @@ const handleDoubleClick = e => {
 };
 
 const handleMine = (target, i) => {
-  fieldData[i].hidden = false;
-  target.classList.remove('hidden');
-  target.classList.add('mine');
+  commonUpdate(target, i, 'mine');
   target.children[0].innerText = 'X';
 };
 
 const handleCount = (target, count, i) => {
-  fieldData[i].hidden = false;
-  target.classList.remove('hidden');
-  target.classList.add('count');
+  commonUpdate(target, i, 'count');
   target.children[0].innerText = `${count}`;
 };
 
 const handleEmpty = (target, i) => {
-  fieldData[i].hidden = false;
-  target.classList.remove('hidden');
-  target.classList.add('empty');
+  commonUpdate(target, i, 'empty');
 
   let proxCells = getProxCells(i, LAT_DIM);
   let emptyCells = [];
@@ -142,9 +136,7 @@ const handleEmpty = (target, i) => {
         handleCount(cellEl, fieldData[prox].count, prox);
       } else {
         emptyCells.push(prox);
-        fieldData[prox].hidden = false;
-        cellEl.classList.remove('hidden');
-        cellEl.classList.add('empty');
+        commonUpdate(cellEl, prox, 'empty');
       }
     }
   });
@@ -168,13 +160,17 @@ const handleEmpty = (target, i) => {
           handleCount(cellEl, fieldData[prox].count, prox);
         } else {
           emptyCells.push(prox);
-          fieldData[prox].hidden = false;
-          cellEl.classList.remove('hidden');
-          cellEl.classList.add('empty');
+          commonUpdate(cellEl, prox, 'empty');
         }
       }
     });
   }
+};
+
+const commonUpdate = (el, i, string) => {
+  fieldData[i].hidden = false;
+  el.classList.remove('hidden');
+  el.classList.add(string);
 };
 
 // Initialize field data
