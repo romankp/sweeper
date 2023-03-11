@@ -3,6 +3,7 @@ import { randomizeBool, getProxCells } from './util.js';
 const LAT_DIM = 8;
 const MINE_CHANCE = 10 / 100;
 
+const root = document.querySelector(':root');
 const field = document.getElementsByTagName('ul')[0];
 let fieldSize = LAT_DIM ** 2;
 let fieldData = [];
@@ -177,6 +178,7 @@ const commonUpdate = (el, i, string) => {
 fieldData = initFieldData(fieldSize);
 
 // Render field
+root.style.setProperty('--dim', LAT_DIM);
 fieldData.map(({ hidden }, i) => {
   const cell = document.createElement('li');
   const content = document.createElement('span');

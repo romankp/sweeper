@@ -45,8 +45,8 @@ div::before {
 
 ul {
   display: grid;
-  grid-template-columns: repeat(var(--dim-val, 8), auto);
-  grid-template-rows: repeat(var(--dim-val, 8), auto);
+  grid-template-columns: repeat(var(--dim, 8), auto);
+  grid-template-rows: repeat(var(--dim, 8), auto);
   width: 400px;
   height: 400px;
   list-style: none;
