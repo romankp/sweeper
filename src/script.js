@@ -4,6 +4,7 @@ const LAT_DIM = 8;
 const MINE_CHANCE = 10 / 100;
 
 const root = document.querySelector(':root');
+const page = document.getElementsByTagName('body')[0];
 const field = document.getElementsByTagName('ul')[0];
 let fieldSize = LAT_DIM ** 2;
 let fieldData = [];
@@ -109,6 +110,8 @@ const handleDoubleClick = e => {
 
 const handleMine = (target, i) => {
   commonUpdate(target, i, 'mine');
+  console.log(page);
+  page.classList.add('tripped');
   target.children[0].innerText = 'X';
 };
 
