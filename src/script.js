@@ -179,12 +179,12 @@ fieldData = initFieldData(fieldSize);
 
 // Render field
 root.style.setProperty('--dim', LAT_DIM);
-fieldData.map(i => {
+fieldData.forEach(({ id }) => {
   const cell = document.createElement('li');
   const content = document.createElement('span');
 
   cell.classList.add('hidden');
-  cell.setAttribute('data-index', i);
+  cell.setAttribute('data-index', id);
   cell.onclick = handleClick;
   cell.ondblclick = handleDoubleClick;
   cell.oncontextmenu = handleRightClick;
