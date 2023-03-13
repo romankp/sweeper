@@ -110,7 +110,6 @@ const handleDoubleClick = e => {
 
 const handleMine = (target, i) => {
   commonUpdate(target, i, 'mine');
-  console.log(page);
   page.classList.add('tripped');
   target.children[0].innerText = 'X';
 };

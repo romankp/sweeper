@@ -58,6 +58,15 @@ ul {
   z-index: 2;
 }
 
+.tripped ul {
+  border-color: red;
+  background-color: red;
+}
+
+.tripped div::before {
+  background-color: #70000d;
+}
+
 li {
   background-color: beige;
   position: relative;
