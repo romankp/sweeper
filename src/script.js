@@ -9,6 +9,7 @@ const field = document.getElementsByTagName('ul')[0];
 let fieldSize = LAT_DIM ** 2;
 let fieldData = [];
 let fieldCount = 0;
+let mineCount = 0;
 
 const initFieldData = size => {
   let cellData = [];
@@ -30,6 +31,8 @@ const initFieldData = size => {
       mineCells.push(i);
     }
   }
+
+  mineCount = mineCells.length;
 
   mineCells.forEach(id => {
     const proxCells = getProxCells(id, LAT_DIM);
