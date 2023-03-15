@@ -8,6 +8,7 @@ const page = document.getElementsByTagName('body')[0];
 const field = document.getElementsByTagName('ul')[0];
 let fieldSize = LAT_DIM ** 2;
 let fieldData = [];
+let fieldCount = 0;
 
 const initFieldData = size => {
   let cellData = [];
@@ -46,8 +47,13 @@ const initFieldData = size => {
 
 const handleClick = ({ target }) => {
   const { index } = target.dataset;
-  const { mine, count } = fieldData[index];
+  const { mine, count, hidden } = fieldData[index];
   const indexInt = Number(index);
+
+  // If the single click target isn't hidden, don't do anything
+  if (!hidden) {
+    return;
+  }
 
   if (mine) {
     handleMine(target, indexInt);
@@ -174,6 +180,7 @@ const commonUpdate = (el, i, string) => {
   fieldData[i].hidden = false;
   el.classList.remove('hidden');
   el.classList.add(string);
+  ++fieldCount;
 };
 
 // Initialize field data
