@@ -63,8 +63,17 @@ ul {
   background-color: red;
 }
 
+.win ul {
+  border-color: #349267;
+  background-color: #349267;
+}
+
 .tripped div::before {
   background-color: #70000d;
+}
+
+.win div::before {
+  background-color: #03361f;
 }
 
 li {
