@@ -184,13 +184,12 @@ const commonUpdate = (el, i, string) => {
   el.classList.remove('hidden');
   el.classList.add(string);
   ++fieldCount;
-  console.log(fieldCount);
 
   if (fieldCount + mineCount === fieldSize) {
     const markedMines = fieldData.filter(({ marked, mine }) => marked && mine);
 
     if (markedMines.length === mineCount) {
-      console.log('WIN');
+      page.classList.add('win');
     }
   }
 };
