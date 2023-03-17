@@ -76,10 +76,17 @@ const handleRightClick = e => {
   const { target } = e;
   const { index } = target.dataset;
   const indexInt = Number(index);
+  const cell = fieldData[indexInt];
 
-  fieldData[indexInt].marked = true;
-  target.classList.add('marked');
-  target.children[0].innerText = '!';
+  if (cell.marked) {
+    cell.marked = false;
+    target.classList.remove('marked');
+    target.children[0].innerText = '';
+  } else {
+    cell.marked = true;
+    target.classList.add('marked');
+    target.children[0].innerText = '!';
+  }
 };
 
 const handleDoubleClick = e => {
