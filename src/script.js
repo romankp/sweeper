@@ -82,7 +82,7 @@ const handleRightClick = e => {
     cell.marked = false;
     target.classList.remove('marked');
     target.children[0].innerText = '';
-  } else {
+  } else if (cell.hidden) {
     cell.marked = true;
     target.classList.add('marked');
     target.children[0].innerText = '!';
