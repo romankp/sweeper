@@ -32,13 +32,12 @@ const initFieldData = size => {
     }
   }
 
+  // Keep track of how many mines are on the field
   mineCount = mineCells.length;
 
+  // Process counts surrounding each mine
   mineCells.forEach(id => {
-    const proxCells = getProxCells(id, LAT_DIM);
-
-    // Process surrounding count
-    proxCells.forEach(prox => {
+    getProxCells(id, LAT_DIM).forEach(prox => {
       if (prox >= 0 && prox < fieldSize && !cellData[prox].mine) {
         cellData[prox].count++;
       }
