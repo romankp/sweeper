@@ -86,6 +86,14 @@ const handleRightClick = e => {
     target.classList.add('marked');
     target.children[0].innerText = '!';
   }
+
+  if (fieldCount + mineCount === fieldSize) {
+    const markedMines = fieldData.filter(({ marked, mine }) => marked && mine);
+
+    if (markedMines.length === mineCount) {
+      page.classList.add('win');
+    }
+  }
 };
 
 const handleDoubleClick = e => {
