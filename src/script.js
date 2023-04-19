@@ -87,13 +87,7 @@ const handleRightClick = e => {
     target.children[0].innerText = '!';
   }
 
-  if (fieldCount + mineCount === fieldSize) {
-    const markedMines = fieldData.filter(({ marked, mine }) => marked && mine);
-
-    if (markedMines.length === mineCount) {
-      page.classList.add('win');
-    }
-  }
+  checkWin();
 };
 
 const handleDoubleClick = e => {
@@ -198,7 +192,10 @@ const commonUpdate = (el, i, string) => {
   el.classList.remove('hidden');
   el.classList.add(string);
   ++fieldCount;
+  checkWin();
+};
 
+const checkWin = () => {
   if (fieldCount + mineCount === fieldSize) {
     const markedMines = fieldData.filter(({ marked, mine }) => marked && mine);
 
