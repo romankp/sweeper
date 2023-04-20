@@ -29,6 +29,7 @@ h1 {
 
 div {
   position: relative;
+  margin-bottom: 9px;
 }
 
 div::before {
@@ -108,4 +109,12 @@ span {
   width: 100%;
   text-align: center;
   font-size: 36px;
+}
+
+button {
+  font-family: monospace;
+  z-index: 3;
+  padding: 9px 12px;
+  background-color: beige;
+  border: 3px solid black;
 }
