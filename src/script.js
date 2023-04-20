@@ -6,6 +6,7 @@ const MINE_CHANCE = 15 / 100;
 const root = document.querySelector(':root');
 const page = document.getElementsByTagName('body')[0];
 const field = document.getElementsByTagName('ul')[0];
+const resetButton = document.getElementsByTagName('button')[0];
 let fieldSize = LAT_DIM ** 2;
 let fieldData = [];
 let fieldCount = 0;
@@ -225,3 +226,35 @@ fieldData.forEach(({ id }) => {
 });
 
 console.log(fieldData);
+
+resetButton.onclick = e => {
+  // Remove existing cells
+  while (field.firstChild) {
+    field.removeChild(field.lastChild);
+  }
+
+  // Reset counts
+  fieldCount = 0;
+  mineCount = 0;
+
+  // Initialize field data
+  fieldData = initFieldData(fieldSize);
+
+  // Render field
+  root.style.setProperty('--dim', LAT_DIM);
+  fieldData.forEach(({ id }) => {
+    const cell = document.createElement('li');
+    const content = document.createElement('span');
+
+    cell.classList.add('hidden');
+    cell.setAttribute('data-index', id);
+    cell.onclick = handleClick;
+    cell.ondblclick = handleDoubleClick;
+    cell.oncontextmenu = handleRightClick;
+
+    cell.appendChild(content);
+    field.appendChild(cell);
+  });
+
+  console.log(fieldData);
+};
