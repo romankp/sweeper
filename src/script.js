@@ -228,6 +228,9 @@ fieldData.forEach(({ id }) => {
 console.log(fieldData);
 
 resetButton.onclick = e => {
+  // Clear page class
+  page.className = '';
+
   // Remove existing cells
   while (field.firstChild) {
     field.removeChild(field.lastChild);
