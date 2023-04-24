@@ -206,40 +206,7 @@ const checkWin = () => {
   }
 };
 
-// Initialize field data
-fieldData = initFieldData(fieldSize);
-
-// Render field
-root.style.setProperty('--dim', LAT_DIM);
-fieldData.forEach(({ id }) => {
-  const cell = document.createElement('li');
-  const content = document.createElement('span');
-
-  cell.classList.add('hidden');
-  cell.setAttribute('data-index', id);
-  cell.onclick = handleClick;
-  cell.ondblclick = handleDoubleClick;
-  cell.oncontextmenu = handleRightClick;
-
-  cell.appendChild(content);
-  field.appendChild(cell);
-});
-
-console.log(fieldData);
-
-resetButton.onclick = e => {
-  // Clear page class
-  page.className = '';
-
-  // Remove existing cells
-  while (field.firstChild) {
-    field.removeChild(field.lastChild);
-  }
-
-  // Reset counts
-  fieldCount = 0;
-  mineCount = 0;
-
+const generateField = () => {
   // Initialize field data
   fieldData = initFieldData(fieldSize);
 
@@ -261,3 +228,24 @@ resetButton.onclick = e => {
 
   console.log(fieldData);
 };
+
+// Reset button listener
+resetButton.onclick = e => {
+  // Clear page class
+  page.className = '';
+
+  // Remove existing cells
+  while (field.firstChild) {
+    field.removeChild(field.lastChild);
+  }
+
+  // Reset counts
+  fieldCount = 0;
+  mineCount = 0;
+
+  // Regenerate field
+  generateField();
+};
+
+// Generate initial field
+generateField();
