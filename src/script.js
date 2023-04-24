@@ -1,7 +1,7 @@
 import { randomizeBool, getProxCells } from './util.js';
 
 const LAT_DIM = 8;
-const MINE_CHANCE = 20 / 100;
+const MINE_CHANCE = 18 / 100;
 
 const root = document.querySelector(':root');
 const page = document.getElementsByTagName('body')[0];
