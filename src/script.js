@@ -58,15 +58,7 @@ const handleClick = ({ target }) => {
     return;
   }
 
-  if (mine) {
-    handleMine(target, indexInt);
-  } else {
-    if (count) {
-      handleCount(target, count, indexInt);
-    } else {
-      handleEmpty(target, indexInt);
-    }
-  }
+  checkAction(mine, target, indexInt, count);
 };
 
 const handleRightClick = e => {
@@ -202,6 +194,40 @@ const checkWin = () => {
 
     if (markedMines.length === mineCount) {
       page.classList.add('win');
+    }
+  }
+};
+
+const checkAction = (mine, target, indexInt, count) => {
+  if (mine) {
+    // We prevent the frustration of tripping a mine on the first click
+    // by regenerating the field/data and clicking the cell again
+    if (!fieldCount) {
+      // Clear page class
+      page.className = '';
+
+      // Remove existing cells
+      while (field.firstChild) {
+        field.removeChild(field.lastChild);
+      }
+
+      // Reset counts
+      fieldCount = 0;
+      mineCount = 0;
+
+      // Regenerate field
+      generateField();
+
+      // Check the cell again
+      field.children[indexInt].click();
+    } else {
+      handleMine(target, indexInt);
+    }
+  } else {
+    if (count) {
+      handleCount(target, count, indexInt);
+    } else {
+      handleEmpty(target, indexInt);
     }
   }
 };
