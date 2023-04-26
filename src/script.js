@@ -203,19 +203,7 @@ const checkAction = (mine, target, indexInt, count) => {
     // We prevent the frustration of tripping a mine on the first click
     // by regenerating the field/data and clicking the cell again
     if (!fieldCount) {
-      // Clear page class
-      page.className = '';
-
-      // Remove existing cells
-      while (field.firstChild) {
-        field.removeChild(field.lastChild);
-      }
-
-      // Reset counts
-      fieldCount = 0;
-      mineCount = 0;
-
-      // Regenerate field
+      resetField();
       generateField();
 
       // Check the cell again
@@ -230,6 +218,20 @@ const checkAction = (mine, target, indexInt, count) => {
       handleEmpty(target, indexInt);
     }
   }
+};
+
+const resetField = () => {
+  // Clear page class
+  page.className = '';
+
+  // Remove existing cells
+  while (field.firstChild) {
+    field.removeChild(field.lastChild);
+  }
+
+  // Reset counts
+  fieldCount = 0;
+  mineCount = 0;
 };
 
 const generateField = () => {
@@ -257,19 +259,7 @@ const generateField = () => {
 
 // Reset button listener
 resetButton.onclick = e => {
-  // Clear page class
-  page.className = '';
-
-  // Remove existing cells
-  while (field.firstChild) {
-    field.removeChild(field.lastChild);
-  }
-
-  // Reset counts
-  fieldCount = 0;
-  mineCount = 0;
-
-  // Regenerate field
+  resetField();
   generateField();
 };
 
