@@ -44,7 +44,7 @@ div::before {
   top: 16px;
 }
 
-ul {
+#field {
   display: grid;
   grid-template-columns: repeat(var(--dim, 8), auto);
   grid-template-rows: repeat(var(--dim, 8), auto);
