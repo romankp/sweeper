@@ -6,7 +6,7 @@ const MINE_CHANCE = 18 / 100;
 const root = document.querySelector(':root');
 const page = document.getElementsByTagName('body')[0];
 const field = document.getElementById('field');
-const resetButton = document.getElementsByTagName('button')[0];
+const resetButton = document.getElementById('reset');
 
 let fieldSize = LAT_DIM ** 2;
 let fieldData = [];
