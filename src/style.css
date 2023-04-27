@@ -119,3 +119,8 @@ button {
   background-color: beige;
   border: 3px solid black;
 }
+
+button:hover {
+  background-color: gray;
+  cursor: pointer;
+}
