@@ -59,12 +59,12 @@ div::before {
   z-index: 2;
 }
 
-.tripped ul {
+.tripped #field {
   border-color: red;
   background-color: red;
 }
 
-.win ul {
+.win #field {
   border-color: #349267;
   background-color: #349267;
 }
@@ -73,7 +73,7 @@ div::before {
   background-color: #70000d;
 }
 
-.win div::before {
+.win div:before {
   background-color: #03361f;
 }
 
