@@ -118,6 +118,7 @@ button {
   padding: 9px 12px;
   background-color: beige;
   border: 3px solid black;
+  user-select: none;
   position: relative;
 }
 
