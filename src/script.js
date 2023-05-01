@@ -1,6 +1,8 @@
 import { randomizeBool, getProxCells } from './util.js';
 
-const LAT_DIM = 8;
+const SMALL_DIM = 8;
+const MED_DIM = 16;
+const LARGE_DIM = 32;
 const MINE_CHANCE = 18 / 100;
 
 const root = document.querySelector(':root');
@@ -8,7 +10,9 @@ const page = document.getElementsByTagName('body')[0];
 const field = document.getElementById('field');
 const resetButton = document.getElementById('reset');
 
-let fieldSize = LAT_DIM ** 2;
+const prevDim = undefined;
+const latDim = prevDim || SMALL_DIM;
+let fieldSize = latDim ** 2;
 let fieldData = [];
 let fieldCount = 0;
 let mineCount = 0;
@@ -39,7 +43,7 @@ const initFieldData = size => {
 
   // Process counts surrounding each mine
   mineCells.forEach(id => {
-    getProxCells(id, LAT_DIM).forEach(prox => {
+    getProxCells(id, latDim).forEach(prox => {
       if (prox >= 0 && prox < fieldSize && !cellData[prox].mine) {
         cellData[prox].count++;
       }
@@ -91,7 +95,7 @@ const handleDoubleClick = e => {
   const cell = fieldData[indexInt];
 
   if (cell.count && !cell.hidden) {
-    const proxCells = getProxCells(indexInt, LAT_DIM);
+    const proxCells = getProxCells(indexInt, latDim);
     const markedCells = proxCells.filter(cell => fieldData[cell].marked);
 
     // If the number of marked cells in the proximity of the clicked cell
@@ -133,7 +137,7 @@ const handleCount = (target, count, i) => {
 const handleEmpty = (target, i) => {
   commonUpdate(target, i, 'empty');
 
-  let proxCells = getProxCells(i, LAT_DIM);
+  let proxCells = getProxCells(i, latDim);
   let emptyCells = [];
 
   // Process surrounding count and empty cells of click target
@@ -157,7 +161,7 @@ const handleEmpty = (target, i) => {
 
   // Radiate out to reveal adjacent empty and count cells
   while (emptyCells.length > 0) {
-    proxCells = getProxCells(emptyCells.shift(), LAT_DIM).filter(
+    proxCells = getProxCells(emptyCells.shift(), latDim).filter(
       cell => fieldData[cell].hidden && !fieldData[cell].mine
     );
 
@@ -240,7 +244,7 @@ const generateField = () => {
   fieldData = initFieldData(fieldSize);
 
   // Render field
-  root.style.setProperty('--dim', LAT_DIM);
+  root.style.setProperty('--dim', latDim);
   fieldData.forEach(({ id }) => {
     const cell = document.createElement('li');
     const content = document.createElement('span');
