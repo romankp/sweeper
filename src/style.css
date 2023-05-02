@@ -30,6 +30,7 @@ h1 {
 div {
   position: relative;
   margin-bottom: 9px;
+  user-select: none;
 }
 
 div::before {
@@ -101,7 +102,6 @@ li:hover {
 
 span {
   pointer-events: none;
-  user-select: none;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -118,7 +118,6 @@ button {
   padding: 9px 12px;
   background-color: beige;
   border: 3px solid black;
-  user-select: none;
   position: relative;
 }
 
