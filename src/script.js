@@ -3,6 +3,11 @@ import { randomizeBool, getProxCells } from './util.js';
 const SMALL_DIM = 8;
 const MED_DIM = 16;
 const LARGE_DIM = 32;
+const DIMS = {
+  SMALL: 8,
+  MED: 16,
+  LARGE: 32,
+};
 const MINE_CHANCE = 18 / 100;
 
 const root = document.querySelector(':root');
@@ -10,9 +15,8 @@ const page = document.getElementsByTagName('body')[0];
 const field = document.getElementById('field');
 const resetButton = document.getElementById('reset');
 
-const prevDim = undefined;
-const latDim = prevDim || SMALL_DIM;
-let fieldSize = latDim ** 2;
+let latDim;
+let fieldSize;
 let fieldData = [];
 let fieldCount = 0;
 let mineCount = 0;
@@ -262,6 +266,22 @@ const generateField = () => {
   console.log(fieldData);
 };
 
+const checkCookie = (string = 'SMALL') => {
+  const sizeCookie = document.cookie
+    .split(';')
+    .filter(string => string.includes('size='));
+  const sizeString = sizeCookie.length && sizeCookie[0].trim().split('=')[1];
+
+  if (sizeString) {
+    latDim = DIMS[sizeString];
+    fieldSize = latDim ** 2;
+  } else {
+    latDim = DIMS[string];
+    fieldSize = latDim ** 2;
+    document.cookie = `size=${string}`;
+  }
+};
+
 // Reset button listener
 resetButton.onclick = e => {
   resetField();
@@ -269,4 +289,5 @@ resetButton.onclick = e => {
 };
 
 // Generate initial field
+checkCookie();
 generateField();
