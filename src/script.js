@@ -14,6 +14,7 @@ const root = document.querySelector(':root');
 const page = document.getElementsByTagName('body')[0];
 const field = document.getElementById('field');
 const resetButton = document.getElementById('reset');
+const sizeButtons = document.getElementsByClassName('size');
 
 let latDim;
 let fieldSize;
@@ -281,6 +282,13 @@ const checkCookie = (string = 'SMALL') => {
     document.cookie = `size=${string}`;
   }
 };
+
+// Size button listener
+Array.from(sizeButtons).forEach(button => {
+  button.onclick = e => {
+    console.log(e);
+  };
+});
 
 // Reset button listener
 resetButton.onclick = e => {
