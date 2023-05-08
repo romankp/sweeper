@@ -1,8 +1,5 @@
 import { randomizeBool, getProxCells } from './util.js';
 
-const SMALL_DIM = 8;
-const MED_DIM = 16;
-const LARGE_DIM = 32;
 const DIMS = {
   SMALL: 8,
   MED: 16,
