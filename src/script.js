@@ -264,13 +264,15 @@ const generateField = () => {
   console.log(fieldData);
 };
 
-const checkCookie = (string = 'SMALL') => {
+const checkCookie = (string = 'SMALL', useSaved = true) => {
   const sizeCookie = document.cookie
     .split(';')
     .filter(string => string.includes('size='));
   const sizeString = sizeCookie.length && sizeCookie[0].trim().split('=')[1];
 
-  if (sizeString) {
+  console.log(sizeString);
+
+  if (sizeString && useSaved) {
     latDim = DIMS[sizeString];
     fieldSize = latDim ** 2;
   } else {
@@ -282,8 +284,10 @@ const checkCookie = (string = 'SMALL') => {
 
 // Size button listener
 Array.from(sizeButtons).forEach(button => {
-  button.onclick = e => {
-    console.log(e);
+  button.onclick = ({ target }) => {
+    resetField();
+    checkCookie(target.getAttribute('data-size'), false);
+    generateField();
   };
 });
 
