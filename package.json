@@ -19,6 +19,6 @@
   "homepage": "https://github.com/romankp/sweeper#readme",
   "source": "src/index.html",
   "devDependencies": {
-    "parcel": "2.8"
+    "parcel": "2.12"
   }
 }

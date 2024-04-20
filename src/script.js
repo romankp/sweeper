@@ -2,8 +2,8 @@ import { randomizeBool, getProxCells } from './util.js';
 
 const DIMS = {
   SMALL: 8,
-  MED: 16,
-  LARGE: 32,
+  MED: 12,
+  LARGE: 20,
 };
 const MINE_CHANCE = 18 / 100;
 
