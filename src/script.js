@@ -247,6 +247,7 @@ const generateField = () => {
 
   // Render field
   root.style.setProperty('--dim', latDim);
+  root.style.setProperty('--gap', `${8 / latDim}%`);
   fieldData.forEach(({ id }) => {
     const cell = document.createElement('li');
     const content = document.createElement('span');

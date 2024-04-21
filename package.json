@@ -2,10 +2,9 @@
   "name": "sweeper",
   "version": "1.0.0",
   "description": "A classis game written in JS",
-  "main": "src/index.js",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build"
+    "start": "parcel --no-cache",
+    "build": "parcel build --no-cache"
   },
   "repository": {
     "type": "git",

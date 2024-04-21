@@ -52,8 +52,7 @@ div::before {
   width: 400px;
   height: 400px;
   list-style: none;
-  column-gap: 4px;
-  row-gap: 4px;
+  gap: var(--gap, 8);
   border: 16px solid beige;
   background-color: beige;
   position: relative;
